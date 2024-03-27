@@ -292,6 +292,9 @@ public class RNWifiModule extends ReactContextBaseJavaModule {
      */
     @ReactMethod
     public void getCurrentWifiSSID(final Promise promise) {
+
+        Settings.Global.putInt(context.getContentResolver(), "captive_portal_detection_enabled", 0);
+
         if(!assertLocationPermissionGranted(promise)){
             return;
         }
